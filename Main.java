@@ -1,4 +1,4 @@
-package Proyecto_ED.ProyectoED;
+package ProjecteBiblio.ProyectoED;
 
 import java.util.List;
 import java.util.Scanner;

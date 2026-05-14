@@ -1,4 +1,4 @@
-package Proyecto_ED.ProyectoED;
+package ProjecteBiblio.ProyectoED;
 
 import java.util.ArrayList;
 import java.util.List;
