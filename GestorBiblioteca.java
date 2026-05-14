@@ -22,4 +22,33 @@ public class GestorBiblioteca {
 			System.out.println("El llibre: " + llibre.getTitle() + " ja està prestat");
 
 		}
+		
+		public void controlEstoc(String titol, Biblioteca biblioteca) {
+		    int total = 0;
+		    int disponibles = 0;
+		    for (Llibre ll : biblioteca.getLlibres()) {
+		        if (ll.getTitol().equalsIgnoreCase(titol)) {
+		            total++;
+		            if (!ll.esPrestat()) disponibles++;
+		        }
+		    }
+		    System.out.println("Llibre: " + titol 
+		                     + " | Total: " + total 
+		                     + " | Disponibles: " + disponibles);
+		}
+		
+		public boolean comprovarDisponibilitat(Llibre llibre) {
+		    return !llibre.esPrestat();
+		}
+		
+		public List<Prestec> getHistorialUsuari(Usuari usuari) {
+		    List<Prestec> historial = new ArrayList<>();
+		    for (Prestec p : prestecs) {
+		        if (p.getUsuari().equals(usuari)) {
+		            historial.add(p);
+		        }
+		    }
+		    return historial;
+		
 	}
+}
