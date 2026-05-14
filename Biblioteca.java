@@ -13,6 +13,7 @@ for (Llibre llibre : llibres) {
 if (llibre.getTitol().equalsIgnoreCase(titol)) {
 return llibre;
 }
+
 }
 return null;
 }
