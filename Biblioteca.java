@@ -1,4 +1,4 @@
-package Proyecto_ED;
+package Proyecto_ED.ProyectoED;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ public class Biblioteca {
 	private List<Usuari> usuaris;
 
 	public Biblioteca() {
-		this.llibres = new ArrayList<>();
-		this.usuaris = new ArrayList<>();
+		llibres = new ArrayList<>();
+		usuaris = new ArrayList<>();
 	}
 
 	public void afegirLlibre(Llibre llibre) {
@@ -25,22 +25,19 @@ public class Biblioteca {
 		return null;
 	}
 
-	public boolean modificarLlibre(String titolActual, String nouTitol, String nouAutor) {
-		Llibre llibre = buscarLlibre(titolActual);
+	public boolean eliminarLlibre(String titol) {
+		Llibre llibre = buscarLlibre(titol);
+
 		if (llibre == null) {
 			return false;
 		}
-		llibre.setTitol(nouTitol);
-		llibre.setAutor(nouAutor);
-		return true;
-	}
 
-	public boolean eliminarLlibre(String titol) {
-		Llibre llibre = buscarLlibre(titol);
-		if (llibre == null || llibre.esPrestat()) {
+		if (llibre.esPrestat()) {
 			return false;
 		}
-		return llibres.remove(llibre);
+
+		llibres.remove(llibre);
+		return true;
 	}
 
 	public void afegirUsuari(Usuari usuari) {
@@ -56,21 +53,19 @@ public class Biblioteca {
 		return null;
 	}
 
-	public boolean modificarUsuari(String nomActual, String nouNom) {
-		Usuari usuari = buscarUsuari(nomActual);
+	public boolean eliminarUsuari(String nom) {
+		Usuari usuari = buscarUsuari(nom);
+
 		if (usuari == null) {
 			return false;
 		}
-		usuari.setNom(nouNom);
-		return true;
-	}
 
-	public boolean eliminarUsuari(String nom) {
-		Usuari usuari = buscarUsuari(nom);
-		if (usuari == null || !usuari.getLlibresPrestats().isEmpty()) {
+		if (!usuari.getLlibresPrestats().isEmpty()) {
 			return false;
 		}
-		return usuaris.remove(usuari);
+
+		usuaris.remove(usuari);
+		return true;
 	}
 
 	public List<Llibre> getLlibres() {
